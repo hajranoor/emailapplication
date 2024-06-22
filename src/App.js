@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+// import MyComponent from './Mycomponent';
+import Navigation from './myComponents/navigation';
+import React from 'react';
+
+import { useState } from 'react';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import MessageDetail from './message';
+import SentBox from './myComponents/SentBox';
+import Inbox from './myComponents/Inbox'
+import DraftBox from './myComponents/DraftBox'
+import InboxDetails from './myComponents/InboxDetails'
+import SentBoxDetails from './myComponents/SentBoxDetails'
+
 
 function App() {
+
+
+
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Navigation  />
+        <Routes>
+          <Route path="/" element={<Inbox />} />
+          <Route path="/sent" element={<SentBox />} />
+          <Route path="/drafts" element={<DraftBox />} />
+          {/* <Route path="/message/:UID" element={<MessageDetail />} /> */}
+          <Route path="/InboxDetails" element={<InboxDetails />} />
+          <Route path="/SentBoxDetails" element={<SentBoxDetails />} />
+
+
+        </Routes>
+      </Router>
+      
+       {/* <Navigation contentComponent={getContentComponent(selectedOption)} setSelectedOption={setSelectedOption} /> */}
     </div>
   );
+
+  
+  
 }
 
 export default App;
